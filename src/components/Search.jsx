@@ -1,6 +1,6 @@
 const Search = () => {
   return (
-    <div className="bg-gray-100 flex rounded-full items-center gap-2 ">
+    <div className="bg-gray-100 flex rounded-full items-center gap-2 px-2 ">
       <svg
         width="16"
         height="16"
