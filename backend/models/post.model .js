@@ -1,25 +1,42 @@
-import {Schema} from "mongoose";
+import { Schema } from "mongoose";
 import mongoose from "mongoose";
 
-const postSchema = new Schema({
-  userName: {
-    type: String,
-    required: true,
-    unique: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-  },
+const postSchema = new Schema(
+  {
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
     img: {
-    type: String,
+      type: String,
+    },
+    title: {
+      type: String,
+      required: true,
+    },
+    slug: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    desc: {
+      type: String,
+    },
+    content: {
+      type: String,
+      required: true,
+    },
+    isFeatured: {
+      type: Boolean,
+      default: false,
+    },
+    visits: {
+      type: Number,
+      default: 0,
+    },
   },
-  savedPost:{
-    type:[String],
-    default: [],
-  }
-}, {timestamps: true});
-
+  { timestamps: true }
+);
 
 export default mongoose.model("Post", postSchema);

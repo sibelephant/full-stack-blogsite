@@ -3,27 +3,21 @@ import mongoose from "mongoose";
 
 const commentSchema = new Schema(
   {
-    img: {
-      type: String,
-    },
-    title: {
-      type: String,
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
       required: true,
     },
-    img: {
+    post: {
+      type: Schema.Types.ObjectId,
+      ref: "Post",
+      required: true,
+    },
+    desc: {
       type: String,
-    },
-    slug: {
-      type:String,
-      required:true,
-      unique:true,
-    },
-    savedPost: {
-      type: [String],
-      default: [],
     },
   },
   { timestamps: true }
 );
 
-export default mongoose.model("Comment", commentSchema);
+export default mongoose.model("Post", commentSchema);
